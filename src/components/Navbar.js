@@ -6,6 +6,7 @@ const Navbar = () => {
     return (
         <nav>
             <h1>Develop Branch</h1>
+            <h1>Circe Branch</h1>
         </nav>
     )
 }
