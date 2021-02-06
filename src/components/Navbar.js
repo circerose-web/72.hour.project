@@ -5,6 +5,7 @@ const Navbar = () => {
     // return must have one parent element
     return (
         <nav>
+            <h1>Develop Branch</h1>
         </nav>
     )
 }
