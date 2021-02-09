@@ -1,24 +1,34 @@
 import { Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-// A component import
-import Navbar from "./components/Navbar";
+
+import "./App.css";
 import Restaurant from "./components/Restaurant";
+import Navbar from "./components/Navbar";
 
-// adding css to jsx is that easy
-import "./App.css"; // This pattern is preferred where css for this component has a matching .css filename
-
-// Defining our <App /> component the function name matches the file name
-function App() {
-  // All functional components need to return jsx with one parent element
+const App = () => {
+  const [pos, setPos] = useState({latitude: 0, longitude: 0})
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition((pos)=> {
+      console.log(pos)
+      setPos(
+        {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude
+        }  
+      )
+    });
+  },[])
   return (
     <div className="App">
-      {/* Parent Element. Also we can't use the word class, so we use className in jsx*/}
-      {/* Navbar is our imported component*/}
+      test
+      {pos.latitude}
+      {pos.longitude}
+       {/* <Restaurant long={location.longitude} lat={location.latitude}/> */}
       <Navbar />
-      <Route path="/restaurant/:name" component={Restaurant} />
+      <Restaurant pos = {pos}/>
     </div>
-  );
-}
+  )
+};
 
-// Makes our Component available for import
 export default App;
