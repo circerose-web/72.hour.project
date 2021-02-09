@@ -1,34 +1,33 @@
-import { Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-
-import "./App.css";
-import Restaurant from "./components/Restaurant";
-import Navbar from "./components/Navbar";
+import "./App.css"; 
+import {useEffect, useState} from 'react';
+import Navbar from './components/Navbar';
+import Restaurant from './components/Restaurant'
 
 const App = () => {
-  const [pos, setPos] = useState({latitude: 0, longitude: 0})
-  useEffect(()=>{
-    navigator.geolocation.getCurrentPosition((pos)=> {
-      console.log(pos)
-      setPos(
-        {
-          latitude: pos.coords.latitude,
-          longitude: pos.coords.longitude
-        }  
-      )
-    });
-  },[])
+  const [pos, setPos] = useState({lat: 0, long: 0});
+  const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getCoords)
+      } else {
+        alert('GeoLocation not enabled');
+      }
+    }
+  const getCoords = (position) => {
+      console.log(position)
+      setPos({
+        lat: position.coords.latitude,
+        long: position.coords.longitude
+      })
+    }
+    useEffect(() => {
+      getLocation();
+    }, [])
   return (
-    <div className="App">
-      test
-      {pos.latitude}
-      {pos.longitude}
-       {/* <Restaurant long={location.longitude} lat={location.latitude}/> */}
+    <div>
       <Navbar />
-      <Restaurant pos = {pos}/>
-    </div>
-  )
-};
+      <Restaurant pos={pos}/>
 
+    </div>
+  );
+};
 export default App;

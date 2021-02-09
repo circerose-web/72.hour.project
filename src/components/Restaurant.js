@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from 'react'; //{useEffect, useState}
 import RestaurantName from './RestaurantName';
-// import Location from '../Geolocated';
+// import Location from App.js props
 
 const Restaurant = ({pos}) => {
     const api_key = '709f6af520f78f9d8f74668b7bc17270';
@@ -19,7 +19,6 @@ const Restaurant = ({pos}) => {
         const restaurants = await response.json();
         const restaurantInfo = restaurants.nearby_restaurants;
         setRestaurant(restaurantInfo);
-        // console.log(restaurantInfo);
     }
 
     useEffect(() => {
