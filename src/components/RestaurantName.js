@@ -1,8 +1,9 @@
+import '../styles/RestaurantName.css'
 const RestaurantName = ({name, id}) => {
     return (
         <div>
             <ul key={id}>
-                <li>{name}</li>
+                <ul>{name}</ul>
             </ul>
         </div>
     );

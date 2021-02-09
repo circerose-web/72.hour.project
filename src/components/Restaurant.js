@@ -1,6 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from 'react'; //{useEffect, useState}
 import RestaurantName from './RestaurantName';
+import '../styles/Restaurant.css'
 // import Location from App.js props
 
 const Restaurant = ({pos}) => {
@@ -25,8 +26,8 @@ const Restaurant = ({pos}) => {
         restaurantData();
     }, [pos.lat, pos.long]);
     return (
-        <div>
-            <h1>Restaurants Near Me</h1>
+        <div className="rest-today">
+            <h1>Local Restaurants to try today</h1>
             {restaurant.map(name => <RestaurantName name={name.restaurant.name} id={name.restaurant.id}/>)}
         </div>
     );
