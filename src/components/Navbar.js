@@ -14,3 +14,4 @@ const Navbar = () => {
 
 // Makes it available for import
 export default Navbar;
+
